@@ -10,7 +10,15 @@ async function main(req, res) {
   const messageColl = db.collection("message");
 
   let message = req.query.message || "DEFAULT";
-  let inputDocument = { message: message };
+  let from = req.query.from || "-";
+  let to = req.query.to || "-";
+  let inputDocument = {
+    message: message,
+    from: from,
+    to: to,
+    ts: new Date(),
+    course: "CDAC",
+  };
   await messageColl.insertOne(inputDocument);
 
   await client.close();
