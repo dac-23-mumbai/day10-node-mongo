@@ -9,7 +9,7 @@ async function main(req, res) {
   const db = client.db("mydb");
   const messageColl = db.collection("message");
 
-  let message = req.query.message;
+  let message = req.query.message || "DEFAULT";
   let inputDocument = { message: message };
   await messageColl.insertOne(inputDocument);
 
