@@ -2,20 +2,16 @@ import express from "express";
 const app = express();
 
 function main(req, res) {
-  // return "some message";
-  res.send("some message...!");
+  res.send("Hello");
 }
 
-function first(req, res) {
-  // logic...
-  res.send("Success");
-}
-
-// http://loaclhost:4000/main
 app.get("/main", main);
 
-// http://loaclhost:4000/first
-app.get("/first", first);
+app.get("/first", (req, res) => res.send("Hello World"));
+
+app.get("/second", (req, res) => {
+  res.send("Hello SEcond!!");
+});
 
 // http://loaclhost:4000
 app.listen(4000);
