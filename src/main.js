@@ -22,9 +22,9 @@ async function readMessage() {
   let message = db.collection("message");
 
   let list = await message.find().toArray();
-  console.log(list);
-
   await client.close();
+
+  return list;
 }
 
 async function main() {
@@ -34,7 +34,8 @@ async function main() {
     from: "tejas",
   };
   // await insertMessage(jsonDocument);
-  readMessage();
+  let list = await readMessage();
+  console.log(list);
 }
 
 main();
