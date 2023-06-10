@@ -9,7 +9,8 @@ async function main(req, res) {
   const db = client.db("mydb");
   const messageColl = db.collection("message");
 
-  let inputDocument = { message: "Hello Node Mongo Express " };
+  let message = req.query.message;
+  let inputDocument = { message: message };
   await messageColl.insertOne(inputDocument);
 
   await client.close();
